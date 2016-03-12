@@ -18,6 +18,19 @@ layout: default
     {% endfor %}
   </ul>
 
+  <h1 class="page-heading">Journal Entries</h1>
+
+  <ul class="journal-list">
+    {% for journal_entry in site.journal_entries %}
+      <li>
+        <span class="journal-meta">{{ journal_entry.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="journal-link" href="{{ journal_entry.url | prepend: site.baseurl }}">{{ journal_entry.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

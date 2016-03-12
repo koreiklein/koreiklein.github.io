@@ -18,3 +18,7 @@ github_username:  koreiklein
 # Build settings
 markdown: kramdown
 
+collections:
+  journal_entries:
+    output: true
+
