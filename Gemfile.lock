@@ -42,5 +42,8 @@ DEPENDENCIES
   jekyll
   jekyll-haml
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   2.0.1
