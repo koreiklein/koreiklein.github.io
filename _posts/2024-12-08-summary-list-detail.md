@@ -326,6 +326,6 @@ only very minimal changes (just grammar and spelling) made by an AI agent 🙂.
 
 If you're interested in getting in touch or in setting up some tooling to implement the Summary-List-Detail
 pattern, I'm working on a new BI tool with an embedded AI assistant to help do exactly that.  Feel free
-to [take a look](https://welcome.quodor.com)! Whether you're using that tool or not, the Summary-List-Detail pattern
+to [take a look](https://welcome.quodor.com?utm_source=blog_summary_list_detail)! Whether you're using that tool or not, the Summary-List-Detail pattern
 can be made to work in just about any data presentation tool (or even in a custom built web app), so there
 should be no shortage of tools out there to help you implement it.
