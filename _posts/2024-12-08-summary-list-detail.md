@@ -10,9 +10,10 @@ categories:
 
 ## Overview
 
-This post describes a pattern I've seen used when presenting people with data.  It's come up
-so many times, and served me well enough that I figure it's time to put down in writing a description of the overall
-pattern. I'll be calling it the Summary-List-Detail pattern because it consists of presenting
+This post is about the most effective pattern I've seen used to present people with data.
+This pattern has come up at every company I've worked for, and replaced a lot of other less disciplined approaches
+that didn't work as well.
+In this post, we will call it the Summary-List-Detail pattern because it consists of presenting
 users with the same underlying data in three different views: the **Summary** view, the **List** view,
 and the **Detail** view.
 
@@ -21,10 +22,14 @@ b) building a summary view that shows aggregated data, c) building a list view t
 of filters to let the viewer select just those items they care about and d) building a detail view that fully explicates
 a single item.*
 
-The rest of this post uses a variety of examples to  describe the 4 artifacts you'd need to build to implement
+The reason this pattern works so well is that it's best way to ensure **consistency** of the semantics of your
+data at different levels of detail. In other words, all your views are telling the same story, and they agree with each other.
+The particular Sumamry, List and Detail views are also a great way to reduce duplication of work because
+these three views can be reused the exact same way in a wide variety of contexts.
+
+Read on to find out about the 4 artifacts you'd need to build to implement
 the pattern: The Summary view, the List view, the Detail view, and most importantly, the Underlying Data Table.
-After that, it covers the benefits of using this pattern, and discusses some AI-related concerns that might
-be relevant.
+After that, we'll go into detail on the benefits of using this pattern, and discuss how AI-agents fit in.
 
 
 ## Example Data Items
@@ -320,12 +325,13 @@ a great way to present the data to people for review.
 
 ## Wrap up
 
-Thanks for reading the post. I hope it had some helpful suggestions, or at least that it gives you some
-useful vocabulary for discussing the various ways of presenting common data.  All the writing is my own, with
-only very minimal changes (just grammar and spelling) made by an AI agent 🙂.
+The Summary-List-Detail pattern is a highly effective way to present people with consistent
+views of the same data at every level of detail.  The Summary view tells them what they need to know about the data
+in aggregate, the List view lets them find specific examples and compare them succintly, and the Detail view
+is for diving deep into everything you'd want to know about any single data item.
 
-If you're interested in getting in touch or in setting up some tooling to implement the Summary-List-Detail
-pattern, I'm working on a new BI tool with an embedded AI assistant to help do exactly that.  Feel free
-to [take a look](https://welcome.quodor.com?utm_source=blog_summary_list_detail)! Whether you're using that tool or not, the Summary-List-Detail pattern
-can be made to work in just about any data presentation tool (or even in a custom built web app), so there
-should be no shortage of tools out there to help you implement it.
+In case you're looking to implement this pattern, I highly recommend taking a look into 
+[Quodor Data](https://welcome.quodor.com?utm_source=blog_summary_list_detail). Quodor is developing a new BI tool
+to help people draw useful conclusions from their internal company data and it's perfectly suited for building
+all the artifacts you need to make the most out of the Summary-List-Detail pattern. But whatever tool you use to
+implement it, this pattern is quite universal and should work well in just about any context.
