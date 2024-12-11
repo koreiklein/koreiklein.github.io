@@ -17,14 +17,14 @@ In this post, we will call it the Summary-List-Detail pattern because it consist
 users with the same underlying data in three different views: the **Summary** view, the **List** view,
 and the **Detail** view.
 
-**TL;DR:** *The Summary-List-Detail pattern consists of a) currating a single data table to underly all three views
+**TL;DR:** *The Summary-List-Detail pattern consists of a) curating a single data table to underlie all three views
 b) building a summary view that shows aggregated data, c) building a list view that shows individual data items, but with a lot
 of filters to let the viewer select just those items they care about and d) building a detail view that fully explicates
 a single item.*
 
-The reason this pattern works so well is that it's best way to ensure **consistency** of the semantics of your
+The reason this pattern works so well is that it's the best way to ensure **consistency** of the semantics of your
 data at different levels of detail. In other words, all your views are telling the same story, and they agree with each other.
-The particular Sumamry, List and Detail views are also a great way to reduce duplication of work because
+The particular Summary, List and Detail views are also a great way to reduce duplication of work because
 these three views can be reused the exact same way in a wide variety of contexts.
 
 Read on to find out about the 4 artifacts you'd need to build to implement
@@ -44,14 +44,14 @@ Here are the examples:
 warehouse based on *where* and *when* we expect the products inside to be sold.
 
 I picked these examples because they illustrate my points and they're what I know the best, but the Summary-List-Detail
-pattern seems general enough that it should work well for a very wide variety of other kinds of data items.  Maybe
-you can read throught the rest of this post with the words "data item" substituted for whatever kind of data you're
+pattern seems general enough that it should work well for a very wide variety of other kinds of data items.
+You can read the rest of this post with the words "data item" substituted for whatever kind of data you're
 thinking of presenting to your end users.
 
 ## The Underlying Data Table
-The first, and most essential part of Summary-List-Detail pattern is the underlying data table.  This table
+The first, and most essential part of the Summary-List-Detail pattern is the underlying data table.  This table
 isn't directly visible to the end user, but it's normally the most important and most challenging piece of the whole
-pattern to get right.  Very importantly, each of the three views (Summary, List, Detail) should be relatively thin
+pattern to get right.  Very importantly, each of the three views (Summary, List, Detail) should be a relatively thin
 presentation layer on top of this underlying data table.
 
 ### Joining data sources together
@@ -117,16 +117,16 @@ the particular details of how we first determined that the box had arrived.
 In general, the point of documenting "official" column names is that we resolve all the ambiguities about what
 our column names mean, we document the columns clearly, and then use the same column definitions consistently
 across the Summary, List and Detail views.  We give the columns distinct, carefully chosen names.  We highlight
-which column names are the most important to our end users and which ones are for only for when we
-want to dig into the internal details.  These "official" columns are going to form the basis of all the statistics
+which column names are the most important to our end users and which ones are only necessary for
+digging into the internal details.  These "official" columns are going to form the basis of all the statistics
 on the Summary, List and Detail reports.  If ever a person (or an automated AI agent) is looking for clarity on the
 precise semantics of one of those reports, we should be able to refer them to the documentation of our underlying data table.
 
-Lastly, I should point out that the things listed above that make for a good underlying data table also make for good table
-generally, even outside the context of the Summary-List-Detail pattern.
+Lastly, I should point out that the things listed above that make for a good underlying data table also make for a
+good table generally, even outside the context of the Summary-List-Detail pattern.
 
 ## Summary View
-The role of the summary view is to present aggregate statics about a potentially very large set of data items.
+The role of the summary view is to present aggregate statistics about a potentially very large set of data items.
 The summary view is great for helping us spot anomalies, for reassuring us that the business is running smoothly,
 and for helping forecast out trends into the future.
 
@@ -170,7 +170,7 @@ make when designing the List view are a) which columns to display and b) which f
 While it's hard to say in general which columns to display in the List view, here are a few principles that may help:
 - Put the most important columns first.
 - If there are several closely related columns, we should probably just display one of them.  If you really want to keep
-the others, but them later in the list, or otherwise hide them in some way.
+the others, put them later in the list, or otherwise hide them in some way.
 - It's usually good for one of the first few columns to be some kind of prominent timestamp that gives the user a sense
 of the rough time frame that the item pertains to.
 
@@ -226,28 +226,28 @@ It's good to add such columns to the event table.  There are circumstances, howe
 relevant for certain event types, but not others e.g. a `box_event.carrier_id` only makes sense for box events
 that involve a shipping carrier.  I've seen a few approaches to handling those kinds of event-type-specific columns.  If there
 are not too many event-type-specific columns, then it's fine to leave them blank when they don't apply.  If there are a lot
-of event-type-specific columns, however, displaying all of them can make the events table rather unweildly. In that case,
+of event-type-specific columns, however, displaying all of them can make the events table rather unwieldy. In that case,
 maybe we display just the most important columns, but add a link to each event that takes you to a Detail view for
 just that one type of event.
 
 ### The Detail View as a Starting point for Discussions
-Sharing a link to a detail view at the start of a discussion with a coworker can really help anchor the discussion
+At the start of a discussion with a coworker, you can share a link to a Detail view to help anchor the discussion
 in shared data.
 e.g. "Hey Joe, any idea why it looks like <ins>this experiment</ins> has been running for over 2 days?" or "Hey freight team,
 I see that <ins>this freight shipment</ins> was supposed to arrive in Chicago but it looks like it actually arrived in Texas.
 Has someone been re-routing our freight shipments?"
-If you're going to get into a discussion with your coworkers about a particualar data item, it's extremely helpful
-if at the start of the discussion, everyone agrees where to go to fetch offical records about it.
+If you're going to get into a discussion with your coworkers about a particular data item, it's extremely helpful
+if at the start of the discussion, everyone agrees where to go to fetch official records about it.
 
 ## Why use the Summary-List-Detail Pattern?
 Here are some of the benefits to organizing your data and presenting it according to the Summary-List-Detail pattern:
 
 #### Easily Find Specific Examples Contributing to a Trend/Anomaly
 One of the top uses of any summary view is to spot trends / anomalies in the data and respond to them ASAP.
-You'll look at some aggregate statistic on the summary view and notice
-that it's going either up or down.  After you spot the trend, however, you then need to find a reason for the change.
+You'll see that some aggregate statistic on the summary view is going either up or down.
+After you spot the trend, however, you then need to find a reason for the change.
 One of the best ways to do that is to bring up the List view,
-filter for the cases that are causing your anomaly, and try to spot the cause there. If it's stil not clear, then maybe
+filter for the cases that are causing your anomaly, and try to spot the cause there. If it's still not clear, then maybe
 you pick a couple specific instances from the list view and review their Detail views to see if it shows up there.
 
 ##### Examples
@@ -272,7 +272,7 @@ drivers arrive on time, but the team operating the warehouse believes that only 
 responsible when the customers are upset about delays? Without consistent reports, each team will naturally want to blame the other one.
 
 **Box Sorting**: The team shipping the boxes says that there were 45 boxes on a particular pallet, but the team
-receiving them says that there were only 38.  Each team beleieves they didn't lose any boxes, but there are
+receiving them says that there were only 38.  Each team believes they didn't lose any boxes, but there are
 still 7 boxes missing.  Who's responsible for the missing inventory and what do we do about it?
 
 The Summary-List-Detail pattern helps to clarify those responsibilities because it sets up a standard set of columns
@@ -286,7 +286,7 @@ ask for some clarity as to what's going on.  A discussion like that, centered ar
 to help the teams get to the root of their problem.
 
 #### List View Re-Use
-List views are super useful, and the same list view is likely to be relevant in a lot of different contexts.
+List views are super useful, and the same List view is likely to be relevant in a lot of different contexts.
 Ideally, you'd like to build out most of the list view just once and then reuse it in each of the different contexts.
 
 ##### Examples:
@@ -294,9 +294,9 @@ Ideally, you'd like to build out most of the list view just once and then reuse 
 **Biological Experiments**:
 
 In the following three contexts, we're going to need to display a list of experiments, and for the sake of simplicity
-we'd really like to be able to use the same list view each time:
+we'd really like to be able to use the same List view each time:
 - Lab operators would like to look at a detail page for a particular instrument in the lab. On the detail page for
-the instrument, we should show them a list of upcomming experiments that will run on that instrument.
+the instrument, we should show them a list of upcoming experiments that will run on that instrument.
 - On the detail page for a particular strain of yeast, we also want to show a list of experiments, but this time
 it's just those experiments that gathered data on that strain of yeast.
 - On the detail page for a person working in the lab, we'd like to see a list of all the recent experiments they've run.
@@ -304,9 +304,9 @@ it's just those experiments that gathered data on that strain of yeast.
 
 ## How Summary-List-Detail relates to AI agents
 Surely any blog post about presenting data to users wouldn't be complete without a mention of genAI. So how do 
-Generative Artifactial Intelligence and Large Language Models fit into this pattern?
+Generative Artificial Intelligence and Large Language Models fit into this pattern?
 
-For one, automatic "data analysis assitants" may help do a lot of the work of building those 4 data artifacts. As that
+For one, automatic "data analysis assistants" may help do a lot of the work of building those 4 data artifacts. As that
 happens, it'll just get easier and easier for people to model and present their data using the Summary-List-Detail
 pattern.
 
@@ -314,11 +314,11 @@ Another big question is whether it will even be necessary for people to create t
 analysis assistants can identify trends and anomalies in the data on their own, why bother building all these views in
 the first place?  While we definitely do see people pushing AI agents to spot and explain trends in data on their own,
 it's still very difficult for the people using them to trust any of their conclusions.  The agents are great at
-coming up with plausible sounding explanations, but sometimes they're just flat out wrong, or they're halucinating,
+coming up with plausible sounding explanations, but sometimes they're just flat out wrong, or they're hallucinating,
 or they're missing some important context that only the people at the business know.  *Do you really want to make an
 important business decision based on the unvalidated conclusions of an AI agent?* If the people at a company
 are ever going to trust the explanations of an AI agent, they're going to need some way to review the same data
-that agent is using and see for themselves whether it actually supports the claim that the agent is making.  So
+agent used and see for themselves whether it actually supports the claim that the agent is making.  So
 regardless of how good these AI agents get at doing the data analysis on their own, there's still going to be a
 need for people to review well presented views of that data, and the Summary-List-Detail pattern will remain
 a great way to present the data to people for review.
@@ -327,7 +327,7 @@ a great way to present the data to people for review.
 
 The Summary-List-Detail pattern is a highly effective way to present people with consistent
 views of the same data at every level of detail.  The Summary view tells them what they need to know about the data
-in aggregate, the List view lets them find specific examples and compare them succintly, and the Detail view
+in aggregate, the List view lets them find specific examples and compare them succinctly, and the Detail view
 is for diving deep into everything you'd want to know about any single data item.
 
 In case you're looking to implement this pattern, I highly recommend taking a look into 
