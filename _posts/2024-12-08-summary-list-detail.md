@@ -331,7 +331,7 @@ in aggregate, the List view lets them find specific examples and compare them su
 is for diving deep into everything you'd want to know about any single data item.
 
 In case you're looking to implement this pattern, I highly recommend taking a look into 
-[Quodor Data](https://welcome.quodor.com?utm_source=blog_summary_list_detail). Quodor is developing a new BI tool
+[Quodor Data](https://welcome.quodor.com/benefits?utm_source=blog_summary_list_detail). Quodor is developing a new BI tool
 to help people draw useful conclusions from their internal company data and it's perfectly suited for building
 all the artifacts you need to make the most out of the Summary-List-Detail pattern. But whatever tool you use to
 implement it, this pattern is quite universal and should work well in just about any context.
