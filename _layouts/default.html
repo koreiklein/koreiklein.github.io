@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
 
+
 {% seo %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
@@ -14,6 +15,8 @@
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
       {%- include google-analytics.html -%}
     {%- endif -%}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>
   </head>
   <body>
 
@@ -84,4 +87,16 @@
       </footer>
     </main>
   </body>
+  <script>
+    var config = {
+        startOnLoad:true,
+        theme: 'forest',
+        flowchart:{
+                useMaxWidth:false,
+                htmlLabels:true
+            }
+    };
+    mermaid.initialize(config);
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+  </script>
 </html>
