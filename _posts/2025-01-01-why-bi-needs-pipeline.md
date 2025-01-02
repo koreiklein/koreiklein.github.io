@@ -40,11 +40,11 @@ A much better approach than the copy-paste is to create some kind of shared arti
 Normally, this consists of some kind of shared data table.  You create the table once, and then re-use the same table
 in several reports that need to use that data.
 
-{% mermaid %}
+```mermaid
 graph LR;
     Shared_Table-->Report1;
     Shared_Table-->Report2;
-{% endmermaid %}
+```
 
 Once you start sharing tables this way, a lot of the work in getting your reports to look good is no longer
 part of the reports themselves, but part of the shared tables that they use.  That's a good practice because it
@@ -55,7 +55,7 @@ into the reports.
 Naturally, you're going to want to have your tables share common logic with each other, leading to more deeply
 nested dependencies between artifacts.
 
-{% mermaid %}
+```mermaid
 graph LR;
     Shared_Table_X-->Shared_Table_A;
     Shared_Table_X-->Shared_Table_B;
@@ -65,7 +65,7 @@ graph LR;
     Shared_Table_B-->Report2;
     Shared_Table_B-->Report3;
     Shared_Table_X-->Report3;
-{% endmermaid %}
+```
 
 In the diagram above, Shared_Table_X is used by two reports and by two other shared tables.  Again, this is another
 good practice, especially if you want future enhancements to the logic in Shared_Table_X to influence everything else
@@ -84,7 +84,7 @@ ones. Sometimes they're called ETL or "Transformation" pipelines.  A few popular
 Companies that use both a BI tool and a Data Pipeline tool wind up with data artifacts that live in either one or
 the other:
 
-{% mermaid %}
+```mermaid
 graph TB;
   subgraph "Data Pipeline"
     Shared_Table_X-->Shared_Table_A;
@@ -102,7 +102,7 @@ graph TB;
   Shared_Table_X-->Report1;
   Shared_Table_A-->Report1;
   Shared_Table_X-->Report3;
-{% endmermaid %}
+```
 
 Before creating a shared data table, employees at the company always need to decide whether to put it in the data
 pipeline, or the BI tool.  Often, that choice is determined by role: The data science and software engineering
@@ -136,7 +136,7 @@ BI tool.
 For all the reasons above, it's advantageous to have a single tool that does all your data transformations, starting
 from raw input data, leading all the way to running the BI experience for end users:
 
-{% mermaid %}
+```mermaid
 graph TB;
   subgraph "Combined BI Tool & Data Pipeline"
     Shared_Table_X-->Shared_Table_A;
@@ -151,7 +151,7 @@ graph TB;
     Shared_Table_A-->Report1;
     Shared_Table_X-->Report3;
   end
-{% endmermaid %}
+```
 
 # Getting the Most out of an Agentic AI Assistant
 Naturally, everyone is excited to incorporate an AI assistant into their BI workflow and use it to automate
