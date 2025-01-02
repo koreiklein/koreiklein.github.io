@@ -175,7 +175,7 @@ to be compounded in the age of agentic AI assistants.
 
 # Wrap Up
 I touched above on how every BI tool is going to need to incorporate some of the functions of a data pipeline,
-explain some of the problems I've seen and heard about when companies split the Data Pipeline stage out from the
+explained some of the problems I've seen and heard about when companies split the Data Pipeline stage out from the
 BI tool, and gave reasons why a combined BI Tool + Data Pipeline architecture will become even more advantageous
 as we rely more on AI assistants to help us analyze our data.
 
