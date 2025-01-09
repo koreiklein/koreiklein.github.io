@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How is Business Intelligence More than Just Data Visualization"
+title: "How Business Intelligence is More Than Just Data Visualization"
 date: 2025-01-08 14:10:23 -0400
 categories: 
 ---
