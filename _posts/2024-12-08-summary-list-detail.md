@@ -2,6 +2,7 @@
 layout: post
 title: "The Summary-List-Detail Pattern"
 date: 2024-12-08 17:10:23 -0400
+canonical_url: 'https://www.quodor.com/quodor-blog/the-summary-list-detail-pattern'
 categories: 
 ---
 
