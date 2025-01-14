@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How Business Intelligence is More Than Just Data Visualization"
+canonical_url: 'https://www.quodor.com/quodor-blog/how-business-intelligence-is-more-than-just-data-visualization'
 date: 2025-01-08 14:10:23 -0400
 categories: 
 ---

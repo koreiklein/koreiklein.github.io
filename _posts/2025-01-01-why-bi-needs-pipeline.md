@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Why your BI Tool Needs Pipeline Management"
+canonical_url: 'https://www.quodor.com/quodor-blog/how-every-bi-tool-ultimately-winds-up-managing-data-pipelines'
 date: 2025-01-01 14:10:23 -0400
 categories: 
 ---
